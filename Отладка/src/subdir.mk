@@ -3,19 +3,6 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-O_SRCS += \
-../src/xfmpc-dbbrowser.o \
-../src/xfmpc-extended-interface.o \
-../src/xfmpc-interface.o \
-../src/xfmpc-lists.o \
-../src/xfmpc-main-window.o \
-../src/xfmpc-main.o \
-../src/xfmpc-playlist.o \
-../src/xfmpc-songinfo.o \
-../src/xfmpc-statusbar.o \
-../src/xfmpc-streams-dialog.o \
-../src/xfmpc-streams.o 
-
 C_SRCS += \
 ../src/cover.c \
 ../src/dbbrowser.c \
