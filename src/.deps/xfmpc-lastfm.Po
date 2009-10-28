@@ -1,0 +1,3 @@
+xfmpc-lastfm.o: lastfm.c lastfm.h
+
+lastfm.h:

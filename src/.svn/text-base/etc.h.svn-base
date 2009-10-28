@@ -1,0 +1,3 @@
+#include <gtk/gtk.h>
+
+void        gtk_widget_set_visible       (GtkWidget *widget, gboolean condition);
