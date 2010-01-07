@@ -408,6 +408,7 @@ xfmpc_interface_reconnect (XfmpcInterface *interface)
 static void
 cb_song_changed (XfmpcInterface *interface)
 {
+	printf("123\n");
 	/* title */
 	xfmpc_interface_set_title (interface, xfmpc_mpdclient_get_title (interface->mpdclient));
 
@@ -419,6 +420,7 @@ cb_song_changed (XfmpcInterface *interface)
 	/* text = xfmpc_interface_get_subtitle (interface); to avoid "n/a" values, so far I don't care */
 	xfmpc_interface_set_subtitle (interface, text);
 	g_free (text);
+	printf("666\n");
 }
 
 static void
@@ -468,6 +470,6 @@ static void
 cb_cover_changed (XfmpcInterface *interface)
 {
 	XfmpcInterfacePrivate *priv = XFMPC_INTERFACE (interface)->priv;
-	const GdkPixbuf* cover = xfmpc_cover_get_picture (interface->cover, 77);
+	GdkPixbuf* cover = xfmpc_cover_get_picture (interface->cover, 77);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(priv->cover_img), cover);
 }
