@@ -84,7 +84,7 @@ struct _XfmpcExtendedInterfacePrivate
 	GtkWidget                        *context_menu;
 	GtkListStore                     *list_store;
 	GtkWidget                        *combobox;
-	GtkWidget                        *combo_hbox
+	GtkWidget                        *combo_hbox;
 };
 
 static GObjectClass *parent_class = NULL;

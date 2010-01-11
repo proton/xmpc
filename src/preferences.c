@@ -519,10 +519,11 @@ xfmpc_preferences_store (XfmpcPreferences *preferences)
 static GKeyFile *
 xfmpc_preferences_get_keyfile (XfmpcPreferences *preferences)
 {
-	GKeyFile *file;
+	GKeyFile *file = NULL;
 	GError* gerror = NULL;
 	gchar* fname = g_strconcat(g_get_home_dir(), ".config/xefia", NULL);
-	if(!g_key_file_load_from_file (file, fname, G_KEY_FILE_KEEP_COMMENTS, &gerror)) file=NULL;
+	gboolean file_loaded = g_key_file_load_from_file (file, fname, G_KEY_FILE_KEEP_COMMENTS, &gerror);
+	if(!file_loaded) file = NULL;
 	g_free(fname);
 	return file;
 }

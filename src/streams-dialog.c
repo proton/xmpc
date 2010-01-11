@@ -183,5 +183,5 @@ xfmpc_streams_dialog_new (gint id)
 		g_free (name);
 		g_free (url);
 	}
-	return dialog;
+	return (GtkWidget*)dialog;
 }
