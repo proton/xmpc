@@ -41,7 +41,7 @@ GType                   xfmpc_ssignal_get_type                () G_GNUC_CONST;
 
 XfmpcSsignal *          xfmpc_ssignal_get                     ();
 
-const GdkPixbuf*        xfmpc_cover_get_picture               (XfmpcSsignal *cover, gint width);
+GdkPixbuf*        xfmpc_cover_get_picture               (XfmpcSsignal *cover, gint width);
 
 G_END_DECLS
 

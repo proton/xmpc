@@ -693,12 +693,7 @@ xfmpc_preferences_delete_stream (XfmpcPreferences *preferences, guint id)
 void
 xfmpc_preferences_stream_get (XfmpcPreferences *preferences, guint id, gchar** name, gchar** url)
 {
-	GKeyFile	*file;
-	GError		*gerror = NULL;
-	gchar*       key_name;
-	gchar*       key_url;
-
-	file = xfmpc_preferences_get_keyfile (preferences);
+	GKeyFile	*file = xfmpc_preferences_get_keyfile (preferences);
 	if (G_UNLIKELY (NULL == file))
 	{
 		g_warning ("Failed to load the preferences");
@@ -707,10 +702,9 @@ xfmpc_preferences_stream_get (XfmpcPreferences *preferences, guint id, gchar** n
 
 	g_object_freeze_notify (G_OBJECT (preferences));
 
-	//xfce_rc_set_group (rc, "Streams");
-
-	key_url = g_strdup_printf ("StreamUrl%i", id);
-	key_name = g_strdup_printf ("StreamName%i", id);
+	gchar* key_name = g_strdup_printf ("StreamUrl%i", id);
+	gchar* key_url = g_strdup_printf ("StreamName%i", id);
+	GError		*gerror = NULL;
 
 	*url = g_strdup_printf (g_key_file_get_string (file, "Streams", key_url, &gerror));
 	*name = g_strdup_printf (g_key_file_get_string (file, "Streams", key_name, &gerror));

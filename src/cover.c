@@ -44,7 +44,7 @@ static void             cb_song_changed                     (XfmpcSsignal *signa
 static void             cb_stopped                          (XfmpcSsignal *signal);
 static void             cb_pp_changed                       (XfmpcSsignal *signal,
 																														gboolean is_playing);
-const GdkPixbuf*        xfmpc_cover_get_default             ();
+GdkPixbuf*        xfmpc_cover_get_default             ();
 
 struct _XfmpcSsignalClass
 {
@@ -118,7 +118,7 @@ xfmpc_ssignal_class_init (XfmpcSsignalClass *klass)
 																												0);
 }
 
-const GdkPixbuf*
+GdkPixbuf*
 xfmpc_cover_get_default ()
 {
 	return gdk_pixbuf_new_from_file (g_build_filename (DATADIR, "pixmaps", "sonatacd_large.png", NULL), NULL);
@@ -202,7 +202,7 @@ cb_pp_changed (XfmpcSsignal *cover, gboolean is_playing)
 	else cb_stopped(cover);
 }
 
-const GdkPixbuf*
+GdkPixbuf*
 xfmpc_cover_get_picture (XfmpcSsignal *cover, gint width)
 {
 	XfmpcSsignalPrivate *priv = XFMPC_SSIGNAL (cover)->priv;
