@@ -312,6 +312,6 @@ static void
 cb_cover_changed (XfmpcSonginfo *songinfo)
 {
 	XfmpcSonginfoPrivate *priv = XFMPC_SONGINFO (songinfo)->priv;
-	const GdkPixbuf* cover = xfmpc_cover_get_picture (songinfo->cover, 150);
+	GdkPixbuf* cover = xfmpc_cover_get_picture (songinfo->cover, 150);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(priv->esCover), cover);
 }
