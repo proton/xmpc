@@ -257,9 +257,9 @@ cb_song_changed (XfmpcTray *tray)
 																xfmpc_mpdclient_get_album (tray->mpdclient),
 																xfmpc_mpdclient_get_date (tray->mpdclient));
 
-	const GdkPixbuf* cover = xfmpc_cover_get_picture (tray->ssignal, 77);
 	priv->notification = notify_notification_new (title, text, NULL, NULL);
 	if(priv->show_tray) notify_notification_attach_to_status_icon(priv->notification, &tray->parent);
+	GdkPixbuf* cover = xfmpc_cover_get_picture (tray->ssignal, 77);
 	notify_notification_set_icon_from_pixbuf (priv->notification, cover);
 	//notify_notification_set_urgency (priv->notification, NOTIFY_URGENCY_NORMAL);
 	//notify_notification_add_action (priv->notification, "Previous", _("Previous"), xfmpc_tray_prev, NULL, NULL);
