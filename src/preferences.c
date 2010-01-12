@@ -519,11 +519,15 @@ xfmpc_preferences_store (XfmpcPreferences *preferences)
 static GKeyFile *
 xfmpc_preferences_get_keyfile (XfmpcPreferences *preferences)
 {
-	GKeyFile *file = NULL;
-	GError* gerror = NULL;
-	gchar* fname = g_strconcat(g_get_home_dir(), ".config/xefia", NULL);
-	gboolean file_loaded = g_key_file_load_from_file (file, fname, G_KEY_FILE_KEEP_COMMENTS, &gerror);
-	if(!file_loaded) file = NULL;
+	GKeyFile *file = g_key_file_new();
+	GError* error = NULL;
+	gchar* fname = g_strconcat(g_get_home_dir(), "/.config/xmpc", NULL);
+	gboolean file_loaded = g_key_file_load_from_file (file, fname, G_KEY_FILE_KEEP_COMMENTS, &error);
+	if(!file_loaded)
+	{
+		g_warning ("%s", error->message);
+		file = NULL;
+	}
 	g_free(fname);
 	return file;
 }
@@ -706,8 +710,8 @@ xfmpc_preferences_stream_get (XfmpcPreferences *preferences, guint id, gchar** n
 	gchar* key_url = g_strdup_printf ("StreamName%i", id);
 	GError		*gerror = NULL;
 
-	*url = g_strdup_printf (g_key_file_get_string (file, "Streams", key_url, &gerror));
-	*name = g_strdup_printf (g_key_file_get_string (file, "Streams", key_name, &gerror));
+//	*url = g_strdup_printf (g_key_file_get_string (file, "Streams", key_url, &gerror));
+//	*name = g_strdup_printf (g_key_file_get_string (file, "Streams", key_name, &gerror));
 
 	g_free (key_url);
 	g_free (key_name);

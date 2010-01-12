@@ -333,8 +333,7 @@ xfmpc_mpdclient_connect (XfmpcMpdclient *mpdclient)
 	mpd_set_port (priv->mi, priv->port);
 	mpd_set_password (priv->mi, (priv->passwd != NULL) ? priv->passwd : "");
 
-	if (mpd_connect (priv->mi) != MPD_OK)
-		return FALSE;
+	//if (mpd_connect (priv->mi) != MPD_OK) return FALSE; //TODO:
 
 	mpd_send_password (priv->mi);
 

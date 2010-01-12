@@ -77,10 +77,10 @@ main (int argc, char *argv[])
 	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
 	g_value_register_transform_func (G_TYPE_STRING, G_TYPE_ENUM, transform_string_to_enum);
 
-	XfmpcMainWindow *window = xfmpc_main_window_get ();
+	//XfmpcMainWindow *window = xfmpc_main_window_get ();
 	//GtkStatusIcon *tray =
 	xfmpc_tray_new();
-	gtk_widget_show_all (GTK_WIDGET (window));
+	//gtk_widget_show_all (GTK_WIDGET (window));
 
 	gtk_main ();
 

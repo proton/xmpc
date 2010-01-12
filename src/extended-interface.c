@@ -185,14 +185,15 @@ xfmpc_extended_interface_init (XfmpcExtendedInterface *extended_interface)
 	GtkWidget *playlists = xfmpc_lists_new ();
 	xfmpc_extended_interface_append_child (extended_interface, playlists, _("Lists"), GTK_STOCK_JUSTIFY_CENTER);
 
-	GtkWidget *streams = xfmpc_streams_new ();
-	xfmpc_extended_interface_append_child (extended_interface, streams, _("Streams"), GTK_STOCK_NETWORK);
+	//TODO:
+//	GtkWidget *streams = xfmpc_streams_new ();
+//	xfmpc_extended_interface_append_child (extended_interface, streams, _("Streams"), GTK_STOCK_NETWORK);
 
-	GtkWidget *songinfo = xfmpc_songinfo_new ();
-	xfmpc_extended_interface_append_child (extended_interface, songinfo, _("Info"), GTK_STOCK_INFO);
-
-	g_object_set_data (G_OBJECT (playlist), "XfmpcDbbrowser", dbbrowser);
-	g_object_set_data (G_OBJECT (playlist), "XfmpcExtendedInterface", extended_interface);
+//	GtkWidget *songinfo = xfmpc_songinfo_new ();
+//	xfmpc_extended_interface_append_child (extended_interface, songinfo, _("Info"), GTK_STOCK_INFO);
+//
+//	g_object_set_data (G_OBJECT (playlist), "XfmpcDbbrowser", dbbrowser);
+//	g_object_set_data (G_OBJECT (playlist), "XfmpcExtendedInterface", extended_interface);
 
 	/* Preferences */
 	g_signal_connect_swapped (extended_interface->preferences, "notify::combobox",

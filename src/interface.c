@@ -188,7 +188,7 @@ xfmpc_interface_init (XfmpcInterface *interface)
 
 	GtkWidget *vbox = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (vbox), priv->title);
-	gtk_container_add (GTK_CONTAINER (vbox), priv->subtitle);
+//	gtk_container_add (GTK_CONTAINER (vbox), priv->subtitle); //TODO:
 
 	GtkWidget *ibox = gtk_vbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (ibox), hbox, FALSE, FALSE, 0);
@@ -368,19 +368,19 @@ static gboolean
 xfmpc_interface_refresh (XfmpcInterface *interface)
 {
 	if (G_UNLIKELY (xfmpc_mpdclient_connect (interface->mpdclient) == FALSE))
-		{
-			g_warning ("Failed to connect to MPD");
-			xfmpc_mpdclient_disconnect (interface->mpdclient);
-			xfmpc_interface_set_pp (interface, FALSE);
-			xfmpc_interface_set_time (interface, 0, 0);
-			xfmpc_interface_set_volume (interface, 0);
-			xfmpc_interface_set_title (interface, _("Not connected"));
-			//xfmpc_interface_set_subtitle (interface, PACKAGE_STRING); //TODO:uncomment
+	{
+		g_warning ("Failed to connect to MPD");
+		xfmpc_mpdclient_disconnect (interface->mpdclient);
+		xfmpc_interface_set_pp (interface, FALSE);
+		xfmpc_interface_set_time (interface, 0, 0);
+		xfmpc_interface_set_volume (interface, 0);
+		xfmpc_interface_set_title (interface, _("Not connected"));
+		//xfmpc_interface_set_subtitle (interface, PACKAGE_STRING); //TODO:uncomment
 
-			/* Start a reconnection timeout and return FALSE to kill the refresh timeout */
-			g_timeout_add (15000, (GSourceFunc)xfmpc_interface_reconnect, interface);
-			return FALSE;
-		}
+		/* Start a reconnection timeout and return FALSE to kill the refresh timeout */
+		g_timeout_add (15000, (GSourceFunc)xfmpc_interface_reconnect, interface);
+		return FALSE;
+	}
 
 	xfmpc_mpdclient_update_status (interface->mpdclient);
 
@@ -408,7 +408,6 @@ xfmpc_interface_reconnect (XfmpcInterface *interface)
 static void
 cb_song_changed (XfmpcInterface *interface)
 {
-	printf("123\n");
 	/* title */
 	xfmpc_interface_set_title (interface, xfmpc_mpdclient_get_title (interface->mpdclient));
 
@@ -420,7 +419,6 @@ cb_song_changed (XfmpcInterface *interface)
 	/* text = xfmpc_interface_get_subtitle (interface); to avoid "n/a" values, so far I don't care */
 	xfmpc_interface_set_subtitle (interface, text);
 	g_free (text);
-	printf("666\n");
 }
 
 static void
